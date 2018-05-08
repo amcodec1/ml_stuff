@@ -1,0 +1,130 @@
+Linear Regression 
+====================
+Regression uses the historical relationship between an independent and a dependent variable to predict
+the future values of the dependent variable.
+
+An independent variable is something that will be manipulated/changed/varied in the experiment.
+The dependent variable is what will be measured as a result of the independent variable.
+
+In simple terms the Independent Variable represents the presumed cause in an experiment,
+while the Dependent Variable represents the effect.
+
+Price = 250,000 + 4(Number of Bedrooms) - 0.6(Repairs) + 2(number of Bathrooms)
+Here, Price is the dependent variable since the price of a house (as per this model)
+depends on three things (variables)
+- the number of bedrooms
+- whether or not repairs are needed (binary - 0 = no repairs are needed, 1 = repairs required)
+- the number of bathrooms.
+
+Each of these three variables are independent because their individual values
+do not depend on the values of the other variables.
+
+When one independent variable is used in a regression, it is called a simple regression;
+When two or more independent variables are used, it is called a multiple regression.
+
+Regression models can be either linear or nonlinear.
+A linear model assumes the relationships between variables are straight-line relationships.
+The concept of linear relationship suggests that two quantities are proportional to each other:
+Doubling one causes the other to double as well.
+
+While a nonlinear model assumes the relationships between variables are represented by curved lines.
+A nonlinear relationship is a type of relationship between two entities in which,
+change in one entity does not correspond with constant change in the other entity.
+Doubling of one doesn't mean the other doubles, it changes by a value other than 2.
+
+Why do we always use a line for regression and not a higher order polynomial?
+The higher the degree of polynomial u use the chance of overfitting increases
+U can use polynomials if u use regularization, which removes chances of overfitting.
+But it isn't a very good way to capture non linear relationships, using SVM instead is a good alternative.
+
+Logistic Regression
+====================
+Logistic regression predicts the probability of an outcome that can only have two values (i.e. a dichotomy).
+The prediction is based on the use of one or several predictors (numerical and categorical).
+
+Logistic Regression is a classification algorithm. It is used to predict a binary outcome
+(1 / 0, Yes / No, True / False) given a set of independent variables.
+To represent binary / categorical outcome, we use dummy variables.
+
+You can also think of logistic regression as a special case of linear regression
+when the outcome variable is categorical, where we are using log of odds as dependent variable.
+
+In simple words, it predicts the probability of occurrence of an event by fitting data to a logit function.
+
+A linear regression is not appropriate for predicting the value of a binary variable for two reasons:
+- A linear regression will predict values outside the acceptable range (predicting probabilities outside the range 0 to 1)
+- Binary data doesnot have a normal distribution, which is a condition needed for most types of regression.
+
+On the other hand, a logistic regression produces a logistic curve, which is limited to values between 0 and 1.
+Logistic regression is similar to a linear regression,
+but the curve is constructed using the natural logarithm of the “odds” of the target variable, rather than the probability.
+Moreover, the predictors do not have to be normally distributed or have equal variance in each group.
+
+The odds is not the same as the probability. The odds is the number of "successes" (deaths) per "failure" (continue to live),
+while the probability is the proportion of "successes".
+I find it instructive to compare how one would estimate these two:
+An estimate of the odds would be the ratio of the number of successes over the number of failures,
+while an estimate of the probability would be the ratio of the number of success over the total number of observations.
+
+Let me clarify the difference between probability and odds. The 
+probability of an event is defined as:
+
+             (Chances for)
+     P(x) = ---------------
+            (Total chances)
+
+So, for example, the probability of drawing an ace in a single deck of 
+52 cards is 4/52 = 1/13 (or about 0.077 = 7.7%).
+
+Odds, on the other hand, are given as:
+
+     (Chances for) : (Chances against)
+
+Incidentally, odds of 1:1 would be read as "one TO one", not "one OUT 
+OF one." (The words "out of" seem to imply total chances, which is 
+probability, not odds.)
+
+Since (Total chances) = (Chances for) + (Chances against), we can 
+calculate (Chances against) = (Total chances) - (Chances for). The 
+odds of drawing an ace in a deck of cards is 4:(52-4) = 4:48 = 1:12.
+
+Notice the difference in the second value; probability uses (Total 
+chances), but odds use (Chances against). This is why the probability 
+(if considered as a ratio) and the odds are different.
+
+The odds ratio for a variable in logistic regression represents
+- how the odds change with a 1 unit increase in that variable holding all other variables constant.
+
+p(creadit_score = 720) = 0.7668
+odds(creadit_score = 720) = 3.289
+
+p(creadit_score = 721) = 0.7694
+odds(creadit_score = 721) = 3.337
+
+Odds ratio for 1 point increase = 3.337/3.289 = 1.0146
+
+Therefor odds ratio represents change in the odds for a 1 unit increase in the independent variable.
+
+
+So here again is the coefficient table output from a logistic regression model.
+
+		Coefficients:	Odds Ratio
+ResidenceLength	0.024680	1.0250	
+DualIncome	0.451800	1.5711	
+
+
+Odds Ratio = e^beta (where beta is coefficients)
+
+So here is the punchline: If you subtract 1 from the odds ratio and multiply by 100
+(that is, odds ratio - 1) times 100), this shows the percentage change in the odds for a 1-unit change in the  X.
+Thus, the odds ratios allow us to see what the effect of the X-variables are on the odds.
+As summarized in the odds ratio, the effect of changing an X-variable is multiplicative.
+It is usually best thought of in terms of the percentage change in the odds for a one-unit change in the X.
+
+Decision Tree 
+====================
+A decision tree is a supervised machine learning algorithm used for predicting outcomes
+based on certain rules and is done by partitioning the data into subsets.
+The partitioning process starts with a binary split and continues until no further splits can be made.
+Various branches of variable length are formed.
+
